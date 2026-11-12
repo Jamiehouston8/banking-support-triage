@@ -1,0 +1,59 @@
+"""FastAPI service.  Run:  uvicorn triage.api:app --port 8000"""
+from __future__ import annotations
+
+import os
+from contextlib import asynccontextmanager
+from pathlib import Path
+
+from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel, Field
+
+from .pipeline import DEFAULT_MODEL_DIR, Triage
+
+STATE: dict = {}
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    if "triage" not in STATE:
+        STATE["triage"] = Triage.from_dir(Path(os.environ.get("MODEL_DIR", DEFAULT_MODEL_DIR)))
+    yield
+
+
+app = FastAPI(title="Banking Support Triage", version="1.0.0", lifespan=lifespan)
+
+
+class Message(BaseModel):
+    text: str = Field(min_length=1, max_length=2000)
+
+
+class Batch(BaseModel):
+    texts: list[str] = Field(min_length=20, max_length=5000)
+
+
+def _t() -> Triage:
+    if "triage" not in STATE:
+        raise HTTPException(503, "model not loaded")
+    return STATE["triage"]
+
+
+@app.get("/health")
+def health():
+    t = _t()
+    return {"status": "ok", "model": t.meta["kind"], "llm_drafting": t.client is not None}
+
+
+@app.get("/model")
+def model_card():
+    m = _t().meta
+    return {k: m[k] for k in ("kind", "params", "threshold", "target_accuracy", "metrics", "trained_at") if k in m}
+
+
+@app.post("/triage")
+def triage(msg: Message):
+    return _t().triage(msg.text)
+
+
+@app.post("/drift")
+def drift(batch: Batch):
+    return _t().drift_report(batch.texts)

@@ -1,0 +1,146 @@
+{
+  "_note": "Fictional help-centre content written for this demo. It is NOT the policy of any real bank. Fees, limits and timings are illustrative.",
+  "articles": [
+    {
+      "id": "KB-01",
+      "title": "Card delivery and activation",
+      "intents": ["card_arrival", "card_delivery_estimate", "activate_my_card", "order_physical_card", "get_physical_card"],
+      "body": "New physical cards are dispatched within 2 working days and usually arrive within 3 to 5 working days in the UK, or up to 10 working days abroad. You can track dispatch in the app under Card > Delivery. If your card has not arrived after 10 working days, cancel it in the app and order a replacement free of charge. To activate a card, open the app, go to Card > Activate and enter the 6-digit code printed on the letter that came with it."
+    },
+    {
+      "id": "KB-02",
+      "title": "Virtual and disposable cards",
+      "intents": ["getting_virtual_card", "get_disposable_virtual_card", "disposable_card_limits", "virtual_card_not_working"],
+      "body": "You can create a virtual card instantly in the app under Card > Add card > Virtual. Disposable virtual cards generate new card details after each payment and are limited to 5 active at a time, with up to 20 created per day. Virtual cards cannot be used at ATMs or for some recurring payments such as hotel and car-hire deposits. If a virtual card is declined, check it has not been frozen and that the merchant accepts virtual cards."
+    },
+    {
+      "id": "KB-03",
+      "title": "Spare cards and card expiry",
+      "intents": ["getting_spare_card", "card_about_to_expire", "card_linking"],
+      "body": "You can hold up to 3 physical cards on one account. Order a spare card under Card > Add card > Physical. When your card is within 30 days of expiry we send a replacement automatically to your registered address; your card number stays the same but the expiry date and CVV change. To link a card you already hold to the app, go to Card > Link existing card and follow the prompts."
+    },
+    {
+      "id": "KB-04",
+      "title": "Card not working, declined or not accepted",
+      "intents": ["card_not_working", "declined_card_payment", "card_acceptance", "contactless_not_working", "visa_or_mastercard"],
+      "body": "Our cards are issued on the Mastercard network and can be used wherever Mastercard is accepted. A payment may be declined if the card is frozen, the balance is too low, a spending limit has been reached, or the merchant category is blocked in your security settings. Contactless needs one chip-and-PIN payment after a new card is activated, and there is a UK limit of 100 pounds per contactless payment. Check Card > Security for freezes and limits before trying again."
+    },
+    {
+      "id": "KB-05",
+      "title": "Lost, stolen or compromised card",
+      "intents": ["lost_or_stolen_card", "compromised_card", "card_swallowed"],
+      "body": "If your card is lost, stolen or you think its details have been compromised, freeze it immediately in the app under Card > Freeze, then contact us so we can cancel it and send a replacement. Do not use the card again even if you find it. If an ATM has retained your card, freeze it in the app and contact us; we cannot retrieve cards from ATMs, so we will issue a replacement."
+    },
+    {
+      "id": "KB-06",
+      "title": "Lost phone and app access",
+      "intents": ["lost_or_stolen_phone", "passcode_forgotten"],
+      "body": "If your phone is lost or stolen, contact us straight away so we can lock app access and freeze your cards. You can then log in on a new device, which requires identity verification. If you have forgotten your app passcode, tap Forgot passcode on the login screen; you will be asked to verify your identity with a selfie and your date of birth."
+    },
+    {
+      "id": "KB-07",
+      "title": "PIN help",
+      "intents": ["change_pin", "pin_blocked"],
+      "body": "You can view your PIN in the app under Card > Show PIN. To change it, use any UK ATM that offers PIN services. Entering the wrong PIN 3 times blocks it; you can unblock it in the app under Card > Unblock PIN, then make one chip-and-PIN transaction or ATM balance check to reset the counter on the card."
+    },
+    {
+      "id": "KB-08",
+      "title": "Payments you don't recognise",
+      "intents": ["card_payment_not_recognised", "cash_withdrawal_not_recognised", "direct_debit_payment_not_recognised", "transaction_charged_twice"],
+      "body": "If you see a payment you do not recognise, first check the merchant name in the transaction details, as businesses sometimes trade under a different name. If you still do not recognise it, freeze your card and contact us so we can investigate and, where appropriate, raise a dispute. A payment that appears twice is often a pending authorisation alongside the final payment; the duplicate usually drops off within 7 days. If both settle, contact us."
+    },
+    {
+      "id": "KB-09",
+      "title": "Pending and reverted card payments",
+      "intents": ["pending_card_payment", "reverted_card_payment?", "pending_cash_withdrawal"],
+      "body": "Card payments and cash withdrawals show as pending until the merchant or ATM operator settles them, which usually takes up to 7 days. If a pending payment is never settled, the money returns to your balance automatically. A reverted payment means the merchant cancelled the authorisation; the funds go back to your balance, usually within a few days."
+    },
+    {
+      "id": "KB-10",
+      "title": "Refunds",
+      "intents": ["request_refund", "Refund_not_showing_up"],
+      "body": "Refunds are issued by the merchant, so please contact them first. Once a merchant has processed a refund it can take up to 5 working days to appear on your account. If it has been longer than that, ask the merchant for the refund reference and contact us with it so we can trace the payment."
+    },
+    {
+      "id": "KB-11",
+      "title": "Fees on card payments and cash withdrawals",
+      "intents": ["card_payment_fee_charged", "cash_withdrawal_charge", "extra_charge_on_statement", "atm_support"],
+      "body": "Card payments in pounds are free. Cash withdrawals are free up to 200 pounds per month; after that a 2% fee applies. Some ATM operators add their own charge, which is shown on the ATM screen before you confirm. You can use any ATM displaying the Mastercard logo. If you see an extra charge on your statement, open the transaction in the app to see a breakdown of the fee."
+    },
+    {
+      "id": "KB-12",
+      "title": "Exchange rates and currency exchange",
+      "intents": ["exchange_rate", "exchange_charge", "exchange_via_app", "card_payment_wrong_exchange_rate", "wrong_exchange_rate_for_cash_withdrawal", "fiat_currency_support"],
+      "body": "We use the interbank exchange rate on weekdays. A 0.5% fee applies on weekends and to exchanges above 1,000 pounds per month. You can exchange between supported currencies in the app under Accounts > Exchange. For card payments and withdrawals in another currency, the rate is set when the payment settles, not when it is authorised, so it can differ slightly from the rate you saw. We support 30 fiat currencies; we do not support cryptocurrency."
+    },
+    {
+      "id": "KB-13",
+      "title": "Where we operate and supported cards",
+      "intents": ["country_support", "supported_cards_and_currencies", "age_limit"],
+      "body": "Accounts are available to UK residents aged 18 or over. You can use your card abroad in any country where Mastercard is accepted, except where restricted by sanctions. You can top up with Visa or Mastercard debit cards issued in the UK or EEA; credit cards and prepaid cards are not accepted for top-ups."
+    },
+    {
+      "id": "KB-14",
+      "title": "Topping up your account",
+      "intents": ["topping_up_by_card", "automatic_top_up", "top_up_limits", "top_up_by_cash_or_cheque", "top_up_by_card_charge", "top_up_by_bank_transfer_charge"],
+      "body": "You can top up by debit card or bank transfer. Card top-ups are instant and free for UK cards; a 1% fee applies to cards issued outside the UK. Bank transfer top-ups are free. Auto top-up can be set under Accounts > Auto top-up to add money when your balance falls below a level you choose. The maximum top-up is 10,000 pounds per day. We do not accept cash or cheque deposits."
+    },
+    {
+      "id": "KB-15",
+      "title": "Top-up problems",
+      "intents": ["pending_top_up", "top_up_failed", "top_up_reverted", "verify_top_up"],
+      "body": "Card top-ups are usually instant but can stay pending for up to 30 minutes while checks run. A top-up can fail if the card is not in your name, the issuing bank declines it, or a limit is reached. If a top-up is reverted, the money returns to the card you used within 5 working days. For the first top-up from a new card we may ask you to verify it by entering a code shown on your card statement."
+    },
+    {
+      "id": "KB-16",
+      "title": "Sending money and transfer problems",
+      "intents": ["transfer_timing", "pending_transfer", "failed_transfer", "declined_transfer", "transfer_not_received_by_recipient", "cancel_transfer", "beneficiary_not_allowed"],
+      "body": "UK transfers by Faster Payments usually arrive within 2 hours; international transfers take 1 to 3 working days. A transfer can be held for security checks, and it can be declined if the details are wrong or the recipient is blocked. You can cancel a transfer only while it is pending, under Payments > Scheduled. If a recipient has not received a completed transfer, ask them to check with their bank, then contact us with the payment reference."
+    },
+    {
+      "id": "KB-17",
+      "title": "Receiving money and balance updates",
+      "intents": ["receiving_money", "transfer_into_account", "balance_not_updated_after_bank_transfer", "balance_not_updated_after_cheque_or_cash_deposit"],
+      "body": "To receive money, share your sort code and account number from Accounts > Details. Incoming UK transfers usually appear within 2 hours but can take until the next working day. We cannot accept cash or cheques. If a transfer has left the sender's bank but is not showing after 1 working day, contact us with the sender's payment reference."
+    },
+    {
+      "id": "KB-18",
+      "title": "Transfer fees",
+      "intents": ["transfer_fee_charged"],
+      "body": "UK transfers in pounds are free. International transfers have a fixed fee shown before you confirm, and the recipient's bank may also charge a fee that we do not control."
+    },
+    {
+      "id": "KB-19",
+      "title": "Cash withdrawal problems",
+      "intents": ["declined_cash_withdrawal", "wrong_amount_of_cash_received"],
+      "body": "A cash withdrawal can be declined if your PIN is blocked, the daily ATM limit of 500 pounds is reached, or the ATM operator rejects the card. If an ATM gave you less cash than requested, keep the ATM receipt and contact us; we will raise a claim with the ATM operator, which can take up to 10 working days."
+    },
+    {
+      "id": "KB-20",
+      "title": "Identity verification",
+      "intents": ["verify_my_identity", "why_verify_identity", "unable_to_verify_identity", "verify_source_of_funds"],
+      "body": "We are required by law to verify your identity before you can use your account. You will need a valid passport, driving licence or national ID card and a selfie. Verification usually takes a few minutes but can take up to 2 working days. For larger deposits we may ask about the source of funds, such as a payslip or sale document. If verification keeps failing, contact us so a specialist can review your documents."
+    },
+    {
+      "id": "KB-21",
+      "title": "Your details and Apple Pay or Google Pay",
+      "intents": ["edit_personal_details", "apple_pay_or_google_pay"],
+      "body": "You can update your address, email and phone number under Profile > Personal details; changing your legal name needs a document check. To add your card to Apple Pay or Google Pay, open Card > Add to wallet in the app, or add it from your phone's wallet app using the card details."
+    },
+    {
+      "id": "KB-22",
+      "title": "Closing your account",
+      "intents": ["terminate_account"],
+      "body": "You can close your account at any time. Before you do, move any remaining balance out and cancel any scheduled payments. Start closure under Profile > Close account, or contact us and we will guide you through it. Closure is final and your cards stop working immediately."
+    }
+  ],
+  "always_human": {
+    "_why": "Fraud, security and vulnerability-sensitive intents are never auto-answered, whatever the model's confidence.",
+    "intents": [
+      "compromised_card", "lost_or_stolen_card", "lost_or_stolen_phone", "card_swallowed",
+      "card_payment_not_recognised", "cash_withdrawal_not_recognised", "direct_debit_payment_not_recognised",
+      "transaction_charged_twice", "unable_to_verify_identity", "verify_source_of_funds",
+      "terminate_account", "wrong_amount_of_cash_received"
+    ]
+  }
+}

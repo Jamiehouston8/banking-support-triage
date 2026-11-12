@@ -1,0 +1,277 @@
+{
+  "dataset": {
+    "name": "Banking77 (PolyAI, CC-BY-4.0)",
+    "train": 8502,
+    "val": 1501,
+    "test": 3080,
+    "intents": 77
+  },
+  "target_accuracy": 0.98,
+  "selected_model": "emb_logreg",
+  "models": [
+    {
+      "model": "tfidf_logreg",
+      "val_accuracy": 0.9141,
+      "val_macro_f1": 0.9148,
+      "test_accuracy": 0.9097,
+      "test_macro_f1": 0.91,
+      "gate_threshold": 0.7027,
+      "val_coverage": 0.7622,
+      "val_auto_accuracy": 0.9808,
+      "test_coverage": 0.7552,
+      "test_auto_accuracy": 0.9828,
+      "fit_seconds": 19.1262,
+      "ms_per_msg": 0.2065
+    },
+    {
+      "model": "emb_logreg",
+      "val_accuracy": 0.9241,
+      "val_macro_f1": 0.9259,
+      "test_accuracy": 0.9266,
+      "test_macro_f1": 0.9265,
+      "gate_threshold": 0.713,
+      "val_coverage": 0.8574,
+      "val_auto_accuracy": 0.9806,
+      "test_coverage": 0.8565,
+      "test_auto_accuracy": 0.9754,
+      "fit_seconds": 1.9267,
+      "ms_per_msg": 3.7993
+    },
+    {
+      "model": "emb_mlp",
+      "val_accuracy": 0.9227,
+      "val_macro_f1": 0.9255,
+      "test_accuracy": 0.9201,
+      "test_macro_f1": 0.9201,
+      "gate_threshold": 0.85,
+      "val_coverage": 0.8248,
+      "val_auto_accuracy": 0.9806,
+      "test_coverage": 0.8221,
+      "test_auto_accuracy": 0.9775,
+      "fit_seconds": 12.0132,
+      "ms_per_msg": 4.0878
+    }
+  ],
+  "gate_curve_test": [
+    {
+      "threshold": 0.0,
+      "coverage": 1.0,
+      "auto_accuracy": 0.9266233766233766
+    },
+    {
+      "threshold": 0.3,
+      "coverage": 0.9876623376623377,
+      "auto_accuracy": 0.9349112426035503
+    },
+    {
+      "threshold": 0.5,
+      "coverage": 0.9376623376623376,
+      "auto_accuracy": 0.9570637119113573
+    },
+    {
+      "threshold": 0.6,
+      "coverage": 0.9016233766233767,
+      "auto_accuracy": 0.9686712279438243
+    },
+    {
+      "threshold": 0.7,
+      "coverage": 0.8597402597402597,
+      "auto_accuracy": 0.9746978851963746
+    },
+    {
+      "threshold": 0.8,
+      "coverage": 0.8068181818181818,
+      "auto_accuracy": 0.9843058350100604
+    },
+    {
+      "threshold": 0.9,
+      "coverage": 0.6964285714285714,
+      "auto_accuracy": 0.9916083916083916
+    },
+    {
+      "threshold": 0.95,
+      "coverage": 0.5555194805194805,
+      "auto_accuracy": 0.9959088252483927
+    }
+  ],
+  "pipeline_test": {
+    "auto_answered_share": 0.7094155844155844,
+    "auto_answered_intent_accuracy": 0.9757437070938215,
+    "sent_to_person_share": 0.2905844155844156,
+    "fraud_security_messages_in_test": 480,
+    "fraud_security_messages_auto_answered": 1,
+    "fraud_security_auto_answered_without_safety_net": 5,
+    "fraud_risk_cutoff": 0.05,
+    "fraud_missed_examples": [
+      {
+        "text": "Will declined funds I tried to withdraw be returned to me?",
+        "true": "wrong_amount_of_cash_received",
+        "predicted": "declined_cash_withdrawal",
+        "confidence": 0.963,
+        "fraud_risk": 0.009
+      }
+    ],
+    "retrieval_hit_at_1": 0.9267734553775744,
+    "retrieval_hit_at_3": 0.9844393592677345
+  },
+  "top_confusions_test": [
+    {
+      "true": "pending_transfer",
+      "predicted": "transfer_timing",
+      "count": 5
+    },
+    {
+      "true": "pending_transfer",
+      "predicted": "transfer_not_received_by_recipient",
+      "count": 5
+    },
+    {
+      "true": "card_payment_not_recognised",
+      "predicted": "compromised_card",
+      "count": 5
+    },
+    {
+      "true": "balance_not_updated_after_bank_transfer",
+      "predicted": "transfer_not_received_by_recipient",
+      "count": 5
+    },
+    {
+      "true": "declined_transfer",
+      "predicted": "declined_card_payment",
+      "count": 4
+    },
+    {
+      "true": "why_verify_identity",
+      "predicted": "verify_my_identity",
+      "count": 4
+    },
+    {
+      "true": "card_arrival",
+      "predicted": "card_delivery_estimate",
+      "count": 4
+    },
+    {
+      "true": "Refund_not_showing_up",
+      "predicted": "reverted_card_payment?",
+      "count": 3
+    }
+  ],
+  "drift_demo": {
+    "like_for_like": {
+      "n": 751,
+      "psi": 0.2516,
+      "psi_warn_at": 0.282,
+      "psi_alert_at": 0.3111,
+      "below_gate_rate": 0.1478,
+      "reference_below_gate_rate": 0.1373,
+      "mean_confidence": 0.8803,
+      "status": "ok",
+      "alerts": [],
+      "biggest_moves": [
+        {
+          "intent": "card_linking",
+          "reference": 0.0227,
+          "current": 0.008
+        },
+        {
+          "intent": "cash_withdrawal_charge",
+          "reference": 0.0227,
+          "current": 0.008
+        },
+        {
+          "intent": "declined_cash_withdrawal",
+          "reference": 0.0267,
+          "current": 0.0133
+        },
+        {
+          "intent": "wrong_amount_of_cash_received",
+          "reference": 0.0267,
+          "current": 0.0133
+        },
+        {
+          "intent": "reverted_card_payment?",
+          "reference": 0.0227,
+          "current": 0.0093
+        }
+      ]
+    },
+    "balanced_test_split": {
+      "n": 1000,
+      "psi": 0.1482,
+      "psi_warn_at": 0.1759,
+      "psi_alert_at": 0.192,
+      "below_gate_rate": 0.135,
+      "reference_below_gate_rate": 0.1426,
+      "mean_confidence": 0.8907,
+      "status": "ok",
+      "alerts": [],
+      "biggest_moves": [
+        {
+          "intent": "card_acceptance",
+          "reference": 0.0047,
+          "current": 0.016
+        },
+        {
+          "intent": "balance_not_updated_after_bank_transfer",
+          "reference": 0.0187,
+          "current": 0.009
+        },
+        {
+          "intent": "change_pin",
+          "reference": 0.0113,
+          "current": 0.02
+        },
+        {
+          "intent": "contactless_not_working",
+          "reference": 0.0027,
+          "current": 0.011
+        },
+        {
+          "intent": "card_swallowed",
+          "reference": 0.0053,
+          "current": 0.013
+        }
+      ]
+    },
+    "card_incident_spike": {
+      "n": 1000,
+      "psi": 1.77,
+      "psi_warn_at": 0.1759,
+      "psi_alert_at": 0.192,
+      "below_gate_rate": 0.152,
+      "reference_below_gate_rate": 0.1426,
+      "mean_confidence": 0.8644,
+      "status": "alert",
+      "alerts": [
+        "intent mix has shifted (PSI 1.77 >= 0.19, the 99th percentile of chance at this sample size)"
+      ],
+      "biggest_moves": [
+        {
+          "intent": "card_acceptance",
+          "reference": 0.0047,
+          "current": 0.061
+        },
+        {
+          "intent": "card_not_working",
+          "reference": 0.0107,
+          "current": 0.064
+        },
+        {
+          "intent": "card_delivery_estimate",
+          "reference": 0.012,
+          "current": 0.062
+        },
+        {
+          "intent": "card_linking",
+          "reference": 0.0153,
+          "current": 0.064
+        },
+        {
+          "intent": "card_about_to_expire",
+          "reference": 0.012,
+          "current": 0.06
+        }
+      ]
+    }
+  }
+}

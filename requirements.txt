@@ -1,0 +1,11 @@
+# serving + training (torch: install the CPU wheel, see Dockerfile)
+scikit-learn>=1.5
+numpy>=1.26
+joblib>=1.4
+sentence-transformers>=3.0
+torch>=2.3
+fastapi>=0.115
+uvicorn>=0.30
+pydantic>=2.7
+anthropic>=1.0
+mlflow>=2.16
