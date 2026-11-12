@@ -6,6 +6,7 @@ from contextlib import asynccontextmanager
 from pathlib import Path
 
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse, RedirectResponse
 from pydantic import BaseModel, Field
 
@@ -22,6 +23,9 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(title="Banking Support Triage", version="1.0.0", lifespan=lifespan)
+# Public demo: the hosted demo page (e.g. on Netlify) calls this API from another origin.
+# No cookies or auth are involved, so a wildcard is safe here.
+app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["GET", "POST"], allow_headers=["content-type"])
 
 
 class Message(BaseModel):

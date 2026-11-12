@@ -29,6 +29,7 @@ button{font:inherit;border:0;border-radius:8px;padding:9px 16px;background:var(-
 <div id="out"></div>
 </main>
 <script>
+const API=(window.TRIAGE_API||'').replace(/\/$/,'');
 const ex=["how long until my card arrives?","there is a payment on my account I don't recognise","my card was stolen","why was I charged a fee for topping up?","can I get a spare card for my partner?","whats the weather like"];
 const chips=document.getElementById('chips'),t=document.getElementById('t'),out=document.getElementById('out');
 ex.forEach(e=>{const b=document.createElement('button');b.textContent=e;b.onclick=()=>{t.value=e;run()};chips.appendChild(b)});
@@ -39,8 +40,10 @@ const nice=s=>s.replace(/_/g,' ').replace(/\?$/,'');
 async function run(){
   const text=t.value.trim(); if(!text) return;
   out.innerHTML='<div class="card muted">Thinking…</div>';
+  const slow=setTimeout(()=>{out.innerHTML='<div class="card muted">Waking the model up. The free server sleeps when nobody is using it, so the first message can take up to a minute…</div>'},4000);
   try{
-    const r=await fetch('/triage',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({text})});
+    const r=await fetch(API+'/triage',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({text})});
+    clearTimeout(slow); if(!r.ok) throw new Error(r.status);
     const d=await r.json(); const auto=d.decision==='auto_answer';
     out.innerHTML=`<div class="card">
       <span class="badge ${auto?'auto':'human'}">${auto?'✓ Answered automatically':'→ Sent to a person'}</span>
@@ -54,6 +57,6 @@ async function run(){
       <div class="lbl">Reply</div>
       ${d.reply?`<div class="reply">${esc(d.reply)}</div><p class="muted">Source: ${d.citations.join(', ')}</p>`:'<p class="muted">No automatic reply. A person handles this one.</p>'}
     </div>`;
-  }catch(e){out.innerHTML='<div class="card">Couldn\'t reach the service. Is it running?</div>'}
+  }catch(e){clearTimeout(slow);out.innerHTML='<div class="card">Couldn\'t reach the service. Is it running?</div>'}
 }
 </script></body></html>
