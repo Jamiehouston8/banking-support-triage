@@ -6,6 +6,7 @@ from contextlib import asynccontextmanager
 from pathlib import Path
 
 from fastapi import FastAPI, HTTPException
+from fastapi.responses import HTMLResponse, RedirectResponse
 from pydantic import BaseModel, Field
 
 from .pipeline import DEFAULT_MODEL_DIR, Triage
@@ -35,6 +36,16 @@ def _t() -> Triage:
     if "triage" not in STATE:
         raise HTTPException(503, "model not loaded")
     return STATE["triage"]
+
+
+@app.get("/", include_in_schema=False)
+def root():
+    return RedirectResponse("/demo")
+
+
+@app.get("/demo", response_class=HTMLResponse, include_in_schema=False)
+def demo():
+    return (Path(__file__).parent / "demo.html").read_text(encoding="utf-8")
 
 
 @app.get("/health")
